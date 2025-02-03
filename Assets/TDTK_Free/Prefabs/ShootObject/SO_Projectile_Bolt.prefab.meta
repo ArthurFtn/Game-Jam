@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: f2168ca10c430ea46b7088236d3ff81e
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5106
+  packageName: Tower Defense Toolkit (TDTK) Free
+  packageVersion: 2.0.1
+  assetPath: Assets/TDTK_Free/Prefabs/ShootObject/SO_Projectile_Bolt.prefab
+  uploadId: 227364
