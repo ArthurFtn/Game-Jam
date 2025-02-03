@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MediumEnemy : Enemy
+public class MidEnemy : Enemy
 {
     protected override void Start()
     {
