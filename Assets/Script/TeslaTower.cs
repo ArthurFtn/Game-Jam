@@ -30,5 +30,6 @@ public class TeslaTower : MonoBehaviour
             enemiesInRange.Remove(other.gameObject);
         }
     }
+}
 
  
