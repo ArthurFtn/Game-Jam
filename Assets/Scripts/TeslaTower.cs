@@ -1,96 +1,58 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public class TeslaTower : MonoBehaviour
 {
-    public float attackRange = 5f;
-    public float attackCooldown = 1.5f;
-    public int damage = 20;
-    public int chainTargets = 2;
-
-    private float attackTimer = 0f;
+    public float damage = 50f;
+    public float attackRange = 10f;
+    public float attackCooldown = 1f;
     public LayerMask enemyLayer;
+
+    private float lastAttackTime;
 
     void Update()
     {
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
+        if (Time.time - lastAttackTime >= attackCooldown)
         {
-            Attack();
-            attackTimer = attackCooldown;
+            PerformChainAttack();
+            lastAttackTime = Time.time;
         }
     }
 
-    void Attack()
+    void PerformChainAttack()
     {
+        // Find enemies in range
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
+
         if (hitColliders.Length == 0) return;
 
-        // Get main target (closest enemy)
-        Transform mainTarget = GetClosestEnemy(hitColliders);
-        if (mainTarget == null) return;
+        // Sort enemies by distance
+        var sortedEnemies = hitColliders
+            .Select(c => c.GetComponent<Enemy>())
+            .Where(e => e != null)
+            .OrderBy(e => Vector3.Distance(transform.position, e.transform.position))
+            .ToList();
 
-        List<Transform> chainedTargets = GetChainedTargets(mainTarget, hitColliders);
-        DealDamage(mainTarget);
-        foreach (var target in chainedTargets)
+        // Attack first 3 enemies
+        for (int i = 0; i < Mathf.Min(3, sortedEnemies.Count); i++)
         {
-            DealDamage(target);
-        }
-
-        // Optional: Add visual effects for lightning chains
-        StartCoroutine(ShowLightningEffect(mainTarget, chainedTargets));
-    }
-
-    Transform GetClosestEnemy(Collider[] enemies)
-    {
-        Transform closest = null;
-        float minDistance = Mathf.Infinity;
-
-        foreach (Collider enemy in enemies)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closest = enemy.transform;
-            }
-        }
-        return closest;
-    }
-
-    List<Transform> GetChainedTargets(Transform mainTarget, Collider[] enemies)
-    {
-        List<Transform> targets = new List<Transform>();
-        foreach (Collider enemy in enemies)
-        {
-            if (enemy.transform == mainTarget) continue;
-
-            if (targets.Count < chainTargets)
-            {
-                targets.Add(enemy.transform);
-            }
-        }
-        return targets;
-    }
-
-    void DealDamage(Transform enemy)
-    {
-        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
-        {
-            enemyHealth.TakeDamage(damage);
+            sortedEnemies[i].TakeDamage(damage);
         }
     }
+}
 
-    System.Collections.IEnumerator ShowLightningEffect(Transform mainTarget, List<Transform> chainedTargets)
-    {
-        // Implement visual effect with LineRenderer or VFX here
-        yield return new WaitForSeconds(0.2f);
-    }
+// Assuming you have a basic Enemy script
+public class Enemy : MonoBehaviour
+{
+    public float health = 100f;
 
-    void OnDrawGizmosSelected()
+    public void TakeDamage(float damageAmount)
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
