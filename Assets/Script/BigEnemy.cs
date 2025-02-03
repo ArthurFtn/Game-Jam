@@ -1,8 +1,11 @@
+using UnityEngine;
+
 public class BigEnemy : Enemy
 {
-    private void Start()
+    protected override void Start()
     {
-        speed = 0.5f;  // Avance lentement
-        health = 300;   // Beaucoup de PV
+        maxHealth = 150f; // Beaucoup de PV
+        speed = 1.5f; // Très lent
+        base.Start();
     }
 }

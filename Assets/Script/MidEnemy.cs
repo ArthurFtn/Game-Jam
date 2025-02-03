@@ -1,8 +1,11 @@
-public class NormalEnemy : Enemy
+using UnityEngine;
+
+public class MediumEnemy : Enemy
 {
-    private void Start()
+    protected override void Start()
     {
-        speed = 1.5f;  // Vitesse normale
-        health = 150;  // PV normaux
+        maxHealth = 75f; // PV moyens
+        speed = 2.5f; // Vitesse moyenne
+        base.Start();
     }
 }

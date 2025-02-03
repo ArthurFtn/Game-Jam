@@ -1,17 +1,46 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour // Classe mère abstraite
 {
-    public float speed = 1f;
-    public int health = 100;
-    
-    public virtual void Move()
+    public float maxHealth;
+    protected float currentHealth;
+    public float speed;
+    protected Transform target;
+
+    protected virtual void Start()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        currentHealth = maxHealth;
+        GameObject baseObject = GameObject.FindGameObjectWithTag("Base");
+        if (baseObject != null)
+        {
+            target = baseObject.transform;
+        }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        Move();
+        MoveTowardsTarget();
+    }
+
+    protected void MoveTowardsTarget()
+    {
+        if (target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    protected void Die()
+    {
+        Destroy(gameObject);
     }
 }

@@ -1,8 +1,11 @@
+using UnityEngine;
+
 public class SmallEnemy : Enemy
 {
-    private void Start()
+    protected override void Start()
     {
-        speed = 3f;   // Avance vite
-        health = 80;  // Peu de PV
+        maxHealth = 40f; // Peu de PV
+        speed = 4.5f; // Très rapide
+        base.Start();
     }
 }
