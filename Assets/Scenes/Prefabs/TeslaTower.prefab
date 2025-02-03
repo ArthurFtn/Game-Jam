@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7126656907077145370}
   - component: {fileID: 5417783461067769813}
   - component: {fileID: 4582414075500885944}
-  - component: {fileID: 1894434450671029867}
   m_Layer: 0
   m_Name: TeslaTower
   m_TagString: Untagged
@@ -109,15 +108,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1894434450671029867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670676090335778811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8cd42c7339b4694f9ac41ee0ac5e7f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
