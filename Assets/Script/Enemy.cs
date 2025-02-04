@@ -10,25 +10,11 @@ public abstract class Enemy : MonoBehaviour // Classe mère abstraite
     protected virtual void Start()
     {
         currentHealth = maxHealth;
-        GameObject baseObject = GameObject.FindGameObjectWithTag("Base");
-        if (baseObject != null)
-        {
-            target = baseObject.transform;
-        }
+        
+        
     }
 
-    protected virtual void Update()
-    {
-        MoveTowardsTarget();
-    }
-
-    protected void MoveTowardsTarget()
-    {
-        if (target != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-    }
+    
 
     public virtual void TakeDamage(float damage)
     {
