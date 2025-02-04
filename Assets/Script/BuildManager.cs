@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public GameObject towerPrefab; // Tour à placer
+    public GameObject MiniGun; // Tour 1
+    public GameObject Cannon;  // Tour 2
+    private GameObject selectedTower; // 🔥 Tour sélectionnée
+
     private bool isPlacing = false; // Mode placement
     public LayerMask groundLayer; // Layer pour le sol
     private GridManager gridManager; // Référence au gestionnaire de grille
@@ -12,12 +15,20 @@ public class BuildManager : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
     }
 
-    public void StartPlacingTower()
+    public void SelectMiniGun() // 🔥 Appelé par le bouton MiniGun
     {
+        selectedTower = MiniGun;
         isPlacing = true;
-        Debug.Log("Mode placement activé !");
+        Debug.Log("MiniGun sélectionné !");
     }
-    
+
+    public void SelectCannon() // 🔥 Appelé par le bouton Cannon
+    {
+        selectedTower = Cannon;
+        isPlacing = true;
+        Debug.Log("Cannon sélectionné !");
+    }
+
     public void StopPlacingTower()
     {
         isPlacing = false;
@@ -26,29 +37,29 @@ public class BuildManager : MonoBehaviour
 
     void Update()
     {
-        if (!isPlacing) return;
+        if (!isPlacing || selectedTower == null) return;
 
         if (Input.GetMouseButtonDown(0)) // Clique gauche
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer)) // 🔥 Détecte UNIQUEMENT le sol
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
             {
                 Debug.Log("✅ Raycast touché : " + hit.collider.name);
 
-                Vector3 gridPosition = gridManager.GetNearestGridPosition(hit.point); // 🔥 Convertit la position en case
+                Vector3 gridPosition = gridManager.GetNearestGridPosition(hit.point);
 
-                // Vérifier si une tour est déjà présente à cet endroit
                 if (IsGridOccupied(gridPosition))
                 {
                     Debug.Log("🚫 Cet emplacement est déjà occupé !");
-                    return; // Ne pas instancier la tour si l'emplacement est occupé
+                    return;
                 }
 
-                Instantiate(towerPrefab, gridPosition, Quaternion.identity);
-
-                Debug.Log("✅ Tour placée à : " + gridPosition);
+                Instantiate(selectedTower, gridPosition, Quaternion.identity); // 🔥 Instancie la tour sélectionnée
+                Debug.Log($"✅ {selectedTower.name} placée à : " + gridPosition);
+                
+                isPlacing = false; // Désactiver le mode placement après avoir posé une tour
             }
             else
             {
@@ -57,17 +68,16 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    // Fonction pour vérifier si l'emplacement est occupé
     private bool IsGridOccupied(Vector3 position)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, 0.5f); // Vérifie si des objets se trouvent à proximité
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag("Tower")) // Assure-toi que tes tours ont le tag "Tower"
+            if (collider.CompareTag("Tower"))
             {
-                return true; // Un objet avec le tag "Tower" a été trouvé à cette position
+                return true;
             }
         }
-        return false; // Aucune tour n'est présente à cet endroit
+        return false;
     }
 }

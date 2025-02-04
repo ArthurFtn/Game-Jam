@@ -47,8 +47,8 @@ GameObject:
   - component: {fileID: 7251145537771802139}
   - component: {fileID: 5158971219083912181}
   m_Layer: 0
-  m_Name: RocketTower
-  m_TagString: Untagged
+  m_Name: RocketTowerPrefabref
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
