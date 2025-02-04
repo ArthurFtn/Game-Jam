@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0897db1de3088b44a98d880a52cd672c
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: -5
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5106
+  packageName: Tower Defense Toolkit (TDTK) Free
+  packageVersion: 2.0.1
+  assetPath: Assets/TDTK_Free/Scripts/LayerManager.cs
+  uploadId: 227364

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b567de80142e5664abe812c1d2647de4
+labels:
+- Free
+- creep
+- Defense
+- Tower
+- TD
+- TowerDefense
+- TDTK
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5106
+  packageName: Tower Defense Toolkit (TDTK) Free
+  packageVersion: 2.0.1
+  assetPath: Assets/TDTK_Free/Scenes/TDTKFree_TwoPath.unity
+  uploadId: 227364
