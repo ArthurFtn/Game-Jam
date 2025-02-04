@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0164f8c-b860-4a9a-9493-e494de646965" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/Prefabs/TeslaTower.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/Prefabs/TeslaTower.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/TeslaTower.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/TeslaTower.unity" afterDir="false" />
-    </list>
+    <list default="true" id="a0164f8c-b860-4a9a-9493-e494de646965" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,6 +97,7 @@
       <workItem from="1738578202658" duration="3233000" />
       <workItem from="1738588359023" duration="7140000" />
       <workItem from="1738659181409" duration="3159000" />
+      <workItem from="1738673459893" duration="279000" />
     </task>
     <servers />
   </component>

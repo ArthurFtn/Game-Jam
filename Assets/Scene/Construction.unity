@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 10, y: 10}
-  cellSize: 1
+  cellSize: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -38,15 +38,36 @@ public class BuildManager : MonoBehaviour
                 Debug.Log("✅ Raycast touché : " + hit.collider.name);
 
                 Vector3 gridPosition = gridManager.GetNearestGridPosition(hit.point); // 🔥 Convertit la position en case
+
+                // Vérifier si une tour est déjà présente à cet endroit
+                if (IsGridOccupied(gridPosition))
+                {
+                    Debug.Log("🚫 Cet emplacement est déjà occupé !");
+                    return; // Ne pas instancier la tour si l'emplacement est occupé
+                }
+
                 Instantiate(towerPrefab, gridPosition, Quaternion.identity);
 
                 Debug.Log("✅ Tour placée à : " + gridPosition);
-                // 🔥 On NE désactive PLUS `isPlacing`, pour placer plusieurs tours
             }
             else
             {
                 Debug.Log("🚫 Rien touché !");
             }
         }
+    }
+
+    // Fonction pour vérifier si l'emplacement est occupé
+    private bool IsGridOccupied(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f); // Vérifie si des objets se trouvent à proximité
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Tower")) // Assure-toi que tes tours ont le tag "Tower"
+            {
+                return true; // Un objet avec le tag "Tower" a été trouvé à cette position
+            }
+        }
+        return false; // Aucune tour n'est présente à cet endroit
     }
 }
