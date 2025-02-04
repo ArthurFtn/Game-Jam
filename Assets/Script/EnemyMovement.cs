@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     void MoveEnemy()
-    {
+    {  
         // Déplacement de l'ennemi vers le waypoint actuel
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         float step = speed * Time.deltaTime; // Calcul de l'étape de déplacement
