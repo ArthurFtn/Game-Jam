@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 455edbe956a1a2f4480e657bf8f1731e
+timeCreated: 1435492991
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5106
+  packageName: Tower Defense Toolkit (TDTK) Free
+  packageVersion: 2.0.1
+  assetPath: Assets/TDTK_Free/Scripts/DemoMenu&Props/Hover.cs
+  uploadId: 227364

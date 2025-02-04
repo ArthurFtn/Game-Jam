@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1d12b457717330e4191cc7d547a3d3ad
+labels:
+- Free
+- creep
+- Defense
+- Tower
+- TD
+- TowerDefense
+- TDTK
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5106
+  packageName: Tower Defense Toolkit (TDTK) Free
+  packageVersion: 2.0.1
+  assetPath: Assets/TDTK_Free/Prefabs/Creeps/CreepCubeShield_Animated.prefab
+  uploadId: 227364
