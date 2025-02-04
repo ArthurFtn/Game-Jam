@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0164f8c-b860-4a9a-9493-e494de646965" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/MAT.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MAT/New Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/EnemyScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/EnemyScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SmallEnemy.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SmallEnemy.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/midEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/midEnemyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/smallEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/smallEnemyPrefab.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +19,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Script/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/EnemyMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Grid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/MidEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SmallEnemy.cs" root0="FORCE_HIGHLIGHTING" />
