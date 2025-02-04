@@ -862,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 56.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -980,7 +980,7 @@ Transform:
   m_GameObject: {fileID: 356551147}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 135.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 519078271}
   - component: {fileID: 519078270}
   m_Layer: 0
-  m_Name: Quad (1)
+  m_Name: Fadeout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,12 +1135,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519078268}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.71202594, z: 0, w: 0.70215315}
-  m_LocalPosition: {x: -12.11, y: 1.40042, z: -4.56}
-  m_LocalScale: {x: 2.8760974, y: -2.7787995, z: 1.0017114}
+  m_LocalRotation: {x: -0, y: -0.71202594, z: -0, w: 0.70215315}
+  m_LocalPosition: {x: -0.63000107, y: -1.3961017, z: -0.044966634}
+  m_LocalScale: {x: 0.5389597, y: -2.395366, z: 1.0008652}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1973054729}
+  m_Father: {fileID: 1674803693}
   m_LocalEulerAnglesHint: {x: 0, y: -90.8, z: 0}
 --- !u!64 &519078270
 MeshCollider:
@@ -1954,6 +1954,7 @@ Transform:
   - {fileID: 1087300403}
   - {fileID: 130755618}
   - {fileID: 1551244686}
+  - {fileID: 1828892199}
   m_Father: {fileID: 1973054729}
   m_LocalEulerAnglesHint: {x: 0, y: 90.9, z: 0}
 --- !u!65 &1423709733
@@ -2685,6 +2686,7 @@ Transform:
   - {fileID: 574806780}
   - {fileID: 1824857302}
   - {fileID: 1539857708}
+  - {fileID: 519078269}
   m_Father: {fileID: 1973054729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1674803694
@@ -3098,7 +3100,7 @@ GameObject:
   - component: {fileID: 1828892201}
   - component: {fileID: 1828892200}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Fadeout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3112,12 +3114,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828892198}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.0072431862, z: -0, w: 0.9999738}
-  m_LocalPosition: {x: -7.672287, y: 1.40042, z: 10.909096}
-  m_LocalScale: {x: 2.8760974, y: -2.7787995, z: 1.0017114}
+  m_LocalRotation: {x: 0, y: -0.7177011, z: 0, w: 0.69635135}
+  m_LocalPosition: {x: -0.010001527, y: 1.9462001, z: 0.020002384}
+  m_LocalScale: {x: 1, y: 3.0875552, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1973054729}
+  m_Father: {fileID: 1423709732}
   m_LocalEulerAnglesHint: {x: 0, y: -91.73, z: 0}
 --- !u!64 &1828892200
 MeshCollider:
@@ -3412,8 +3414,6 @@ Transform:
   - {fileID: 170427070}
   - {fileID: 1423709732}
   - {fileID: 1674803693}
-  - {fileID: 1828892199}
-  - {fileID: 519078269}
   m_Father: {fileID: 185936352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2033761339
