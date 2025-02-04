@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class TowerMinigun : MonoBehaviour
+public class TowerRocket : MonoBehaviour
 {
-    public float damage = 3f; // Lower damage per shot
-    public float attackRange = 5f;
-    public float attackCooldown = 0.1f; // Faster attack speed
+    public float attackRange = 7f;
+    public float attackCooldown = 2f; // Slower fire rate
     private float lastAttackTime;
+  
 
-    public GameObject bulletPrefab; // Assign in Inspector
-    public Transform firePoint; // Empty GameObject for bullet spawn
+    public GameObject rocketPrefab; // Assign in Unity Inspector
+    public Transform firePoint; // Position where rockets spawn
+    public AudioSource shootAudio;
 
     void Update()
     {
@@ -23,12 +24,20 @@ public class TowerMinigun : MonoBehaviour
     {
         if (Time.time - lastAttackTime >= attackCooldown)
         {
-            // Spawn a bullet at firePoint
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            // Spawn a rocket at firePoint
+            GameObject rocketObj = Instantiate(rocketPrefab, firePoint.position, firePoint.rotation);
+            
+            // Assign the enemy as the rocket's target
+            Rocket rocket = rocketObj.GetComponent<Rocket>();
+            if (rocket != null)
+            {
+                rocket.SetTarget(enemy.transform);
+            }
 
-            // Make the bullet face the enemy
-            bullet.transform.LookAt(enemy.transform);
-
+            if (shootAudio != null)
+            {
+                shootAudio.Play();
+            }
             lastAttackTime = Time.time;
         }
     }

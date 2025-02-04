@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class TowerMinigun : MonoBehaviour
+public class MiniGunAttack : MonoBehaviour
 {
-    public float damage = 3f; // Lower damage per shot
     public float attackRange = 5f;
-    public float attackCooldown = 0.1f; // Faster attack speed
+    public float attackCooldown = 0.1f; // Faster firing speed
     private float lastAttackTime;
 
-    public GameObject bulletPrefab; // Assign in Inspector
-    public Transform firePoint; // Empty GameObject for bullet spawn
+    public GameObject bulletPrefab; // Assign in Unity Inspector
+    public Transform firePoint; // Position where bullets spawn
 
     void Update()
     {
