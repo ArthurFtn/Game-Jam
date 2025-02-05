@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 068428959eecd9a41879240a2a874b1f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 249007
+  packageName: Stylized Fantasy Cave Crasher
+  packageVersion: 1.0
+  assetPath: Assets/CaveCrasher/Materials/Mobile/M_CaveCrasher_Pe.mat
+  uploadId: 568336
