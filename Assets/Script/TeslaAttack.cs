@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class TowerTesla : MonoBehaviour
+public class TowerMinigun : MonoBehaviour
 {
-    public float damage = 10f;
+    public float damage = 3f; // Lower damage per shot
     public float attackRange = 5f;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 0.1f; // Faster attack speed
     private float lastAttackTime;
+
+    public GameObject bulletPrefab; // Assign in Inspector
+    public Transform firePoint; // Empty GameObject for bullet spawn
 
     void Update()
     {
@@ -16,11 +19,23 @@ public class TowerTesla : MonoBehaviour
         }
     }
 
+    void Attack(Enemy enemy)
+    {
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            // Spawn a bullet at firePoint
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            // Make the bullet face the enemy
+            bullet.transform.LookAt(enemy.transform);
+
+            lastAttackTime = Time.time;
+        }
+    }
+
     Enemy FindClosestEnemy()
     {
-        // 🔥 La clé : récupérer TOUS les objets qui héritent de Enemy (y compris BigEnemy, MediumEnemy, SmallEnemy)
         Enemy[] enemies = Object.FindObjectsByType<Enemy>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
         if (enemies.Length == 0) return null;
 
         Enemy closestEnemy = null;
@@ -37,14 +52,5 @@ public class TowerTesla : MonoBehaviour
         }
 
         return closestEnemy;
-    }
-
-    void Attack(Enemy enemy)
-    {
-        if (Time.time - lastAttackTime >= attackCooldown)
-        {
-            enemy.TakeDamage(damage);
-            lastAttackTime = Time.time;
-        }
     }
 }

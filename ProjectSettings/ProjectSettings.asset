@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 0
   companyName: DefaultCompany
   productName: Game-Jam
-  defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  defaultCursor: {fileID: 2800000, guid: bb57a4c5a1ec38a41949d0975ede9ac1, type: 3}
+  cursorHotspot: {x: 30.95, y: 15.41}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -164,6 +164,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.tfbgames.towerdefense
+    Standalone: com.DefaultCompany.Game-Jam
     iPhone: com.tfbgames.towerdefense
   buildNumber:
     Standalone: 0

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1946953541242061204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7502140693484280230}
+  - component: {fileID: 5666983582200914794}
+  m_Layer: 0
+  m_Name: BuildManagerPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7502140693484280230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946953541242061204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.793144, y: 27.774462, z: -52.305466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5666983582200914794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946953541242061204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e4930f55ad748c38639839f814fc3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inferno: {fileID: 2706364956460129053, guid: 8b2eec9f9db9dba45950954403a92658, type: 3}
+  Tesla: {fileID: 6542141224529953955, guid: 619a488fc2a39dc4e85bc8ad1ece08a9, type: 3}
+  MiniGun: {fileID: 8812366742520334555, guid: 1fec075884cb1274093ef2e43e0eff84, type: 3}
+  Cannon: {fileID: 8812366742520334555, guid: 8ba40a1cb649c60429f97af3e783899c, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
