@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a0164f8c-b860-4a9a-9493-e494de646965" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/BigEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/BigEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/BuildManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/BuildManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/MidEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/MidEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/MiniGunAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/MiniGunAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/RocketTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RocketTower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/SmallEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/SmallEnemy.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +24,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/EnemyMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Grid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/ITowerAttack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/MidEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/SellableTower.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SmallEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/TourSpot.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -108,7 +108,7 @@
       <workItem from="1738588359023" duration="7140000" />
       <workItem from="1738659181409" duration="3159000" />
       <workItem from="1738673459893" duration="279000" />
-      <workItem from="1738744182326" duration="1559000" />
+      <workItem from="1738744182326" duration="7034000" />
     </task>
     <servers />
   </component>
