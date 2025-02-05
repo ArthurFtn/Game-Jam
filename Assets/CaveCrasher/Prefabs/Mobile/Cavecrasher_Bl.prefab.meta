@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a25419db5e9becb4abb8edc5d77f0428
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 249007
+  packageName: Stylized Fantasy Cave Crasher
+  packageVersion: 1.0
+  assetPath: Assets/CaveCrasher/Prefabs/Mobile/Cavecrasher_Bl.prefab
+  uploadId: 568336

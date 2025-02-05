@@ -1,64 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
+public class playerMovement : MonoBehaviour
+{ 
+    private Vector3 Velocity;
+    private Vector3 PlayerMovementInput;
+    private Vector2 PlayerMouseInput;
+    private float xRot;
 
-public class PlayerMovement : MonoBehaviour
-{
-    void Start()
-    {
-        transform.position = new Vector3(0, 0.5f, 0);
-    }
-    private Vector3 playerMovementInput;
-    private Vector2 playerMouseInput;
-    private float xRotation;
-
-    [SerializeField] private Transform playerCamera;
-    [SerializeField] private CharacterController controller;
-    
+    [SerializeField] private Transform PlayerCamera;
+    [SerializeField] private CharacterController Controller;
     [Space]
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float sensitivity = 2f;
+    [SerializeField] private float Speed;
+    [SerializeField] private float Sensitivity;
 
     void Update()
     {
-        // Récupération des entrées clavier et souris
-        playerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        PlayerMovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        // Appel des fonctions de mouvement et de rotation
         MovePlayer();
         MovePlayerCamera();
     }
 
     private void MovePlayer()
     {
-        // Conversion du vecteur de mouvement selon la direction du joueur
-        Vector3 moveVector = transform.TransformDirection(playerMovementInput);
+        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput);
 
-        // Gestion de la montée et descente (espace et shift)
-        float velocityY = 0f;
         if (Input.GetKey(KeyCode.Space))
         {
-            velocityY = 1f;
+            Velocity.y = 1f;
         }
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            velocityY = -1f;
+            Velocity.y = -1f;
         }
 
-        moveVector.y = velocityY;
+        Controller.Move(MoveVector * Speed * Time.deltaTime);
+        Controller.Move(Velocity * Speed * Time.deltaTime);
 
-        // Déplacement avec le CharacterController
-        controller.Move(moveVector * speed * Time.deltaTime);
+        Velocity.y = 0f;
     }
 
     private void MovePlayerCamera()
     {
-        // Rotation de la caméra en fonction de la souris
-        xRotation -= playerMouseInput.y * sensitivity;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Limite de la rotation verticale
-
-        transform.Rotate(Vector3.up * playerMouseInput.x * sensitivity);
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        xRot -= PlayerMouseInput.y * Sensitivity;
+        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
+        PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
     }
 }
