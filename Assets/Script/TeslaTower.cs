@@ -13,6 +13,14 @@ public class TeslaTower : MonoBehaviour
 
     public float slowFactor = 0.5f; // 50% speed reduction
     public float slowDuration = 2f; // Slows enemies for 2 seconds
+    private AudioSource audioSource;
+
+    void Start()
+{
+    audioSource = GetComponent<AudioSource>();
+}
+
+
 
     void Update()
     {
@@ -28,8 +36,12 @@ public class TeslaTower : MonoBehaviour
         if (enemies.Length == 0) return;
 
         lastAttackTime = Time.time;
+        
+        if (audioSource != null)
+    {
+        audioSource.Play();
+    }
 
-        Enemy previousTarget = null;
         Vector3 startPoint = transform.position;
 
         for (int i = 0; i < Mathf.Min(maxChainTargets, enemies.Length); i++)
@@ -41,6 +53,7 @@ public class TeslaTower : MonoBehaviour
 
             // Apply slow effect
             target.ApplySlow(slowFactor, slowDuration);
+            Debug.Log("Slowing enemy: " + target.name);
 
             // Spawn Lightning Effect
             SpawnLightningEffect(startPoint, target.transform.position);

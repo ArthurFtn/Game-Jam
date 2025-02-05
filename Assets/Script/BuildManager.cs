@@ -1,136 +1,122 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BuildManager : MonoBehaviour
 {
-    public GameObject MiniGun; // Tour 1
-    public GameObject Cannon;  // Tour 2
-    private GameObject selectedTower; // Tour sélectionnée
-    private GameObject previewTower; // Prévisualisation de la tour
-    private bool isPlacing = false; // Mode placement
-    public LayerMask groundLayer; // Layer pour le sol
-    private GridManager gridManager; // Référence au gestionnaire de grille
+    public GameObject Inferno;
+    public GameObject Tesla;
+    public GameObject MiniGun; 
+    public GameObject Cannon;  
+    private GameObject selectedTower; 
+    private GameObject previewTower; 
+    private bool isPlacing = false; 
+    public LayerMask groundLayer; 
+    private GridManager gridManager; 
+
+    private Dictionary<GameObject, int> towerCosts = new Dictionary<GameObject, int>(); // Store tower costs
 
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
     }
 
-    public void SelectMiniGun() // Appelé par le bouton MiniGun
+    public void SelectMiniGun() 
     {
         selectedTower = MiniGun;
-        if (selectedTower == null)
-        {
-            Debug.LogError("La tour MiniGun n'est pas assignée dans l'inspecteur !");
-        }
         isPlacing = true;
-        CreatePreviewTower(); // Créer la prévisualisation de la tour
-        Debug.Log("MiniGun sélectionné !");
+        CreatePreviewTower();
     }
 
-    public void SelectCannon() // Appelé par le bouton Cannon
+    public void SelectCannon() 
     {
         selectedTower = Cannon;
-        if (selectedTower == null)
-        {
-            Debug.LogError("La tour Cannon n'est pas assignée dans l'inspecteur !");
-        }
         isPlacing = true;
-        CreatePreviewTower(); // Créer la prévisualisation de la tour
-        Debug.Log("Cannon sélectionné !");
+        CreatePreviewTower();
+    }
+
+    public void SelectTesla() 
+    {
+        selectedTower = Tesla;
+        isPlacing = true;
+        CreatePreviewTower();
+    }
+
+    public void SelectInferno() 
+    {
+        selectedTower = Inferno;
+        isPlacing = true;
+        CreatePreviewTower();
     }
 
     public void StopPlacingTower()
     {
         isPlacing = false;
-        Destroy(previewTower); // Supprimer la prévisualisation si le placement est annulé
-        Debug.Log("Mode placement désactivé !");
+        Destroy(previewTower);
     }
 
     void CreatePreviewTower()
     {
-        if (selectedTower == null)
-        {
-            Debug.LogError("Aucune tour sélectionnée !"); // Ajoute un message d'erreur si la tour n'est pas sélectionnée.
-            return; // Ne pas essayer de prévisualiser si aucune tour n'est sélectionnée.
-        }
+        if (selectedTower == null) return;
 
         if (previewTower != null)
         {
-            Destroy(previewTower); // Supprimer l'ancienne prévisualisation s'il y en a une
+            Destroy(previewTower);
         }
 
-        // Instancier la tour sélectionnée comme prévisualisation
         previewTower = Instantiate(selectedTower, Vector3.zero, Quaternion.identity);
-        previewTower.GetComponent<Renderer>().material.color = Color.green; // Changer la couleur de la prévisualisation pour la rendre visible
-        previewTower.GetComponent<Collider>().enabled = false; // Désactiver le collider pour qu'elle ne bloque pas le placement
-
-        // Désactiver l'attaque sur la prévisualisation
-        DisableTowerAttack(previewTower);
+        previewTower.GetComponent<Renderer>().material.color = Color.green; 
+        previewTower.GetComponent<Collider>().enabled = false; 
     }
-
-    void DisableTowerAttack(GameObject tower)
-    {
-        if (tower == null) return;
-
-        ITowerAttack attackScript = null;
-
-        // Parcourir tous les MonoBehaviour pour trouver ITowerAttack
-        foreach (MonoBehaviour script in tower.GetComponentsInChildren<MonoBehaviour>())
-        {
-            if (script is ITowerAttack)
-            {
-                attackScript = (ITowerAttack)script;
-                break;
-            }
-        }
-
-        if (attackScript != null)
-        {
-            attackScript.DisableAttack();
-            Debug.Log("🔴 Attaque désactivée pour la prévisualisation.");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ Aucun script ITowerAttack trouvé sur la tour.");
-        }
-    }
-
 
     void Update()
     {
-        if (!isPlacing || selectedTower == null) return;
-
-        if (previewTower != null)
+        if (isPlacing && selectedTower != null)
         {
-            Vector3 gridPosition = GetMousePositionOnGrid(); // Obtenir la position du curseur sur la grille
-            previewTower.transform.position = gridPosition; // Déplacer la prévisualisation
-
-            if (Input.GetMouseButtonDown(0)) // Clique gauche
+            if (previewTower != null)
             {
-                if (IsGridOccupied(gridPosition)) // Vérifier si l'emplacement est occupé
-                {
-                    Debug.Log("🚫 Cet emplacement est déjà occupé !");
-                    return;
-                }
+                Vector3 gridPosition = GetMousePositionOnGrid();
+                previewTower.transform.position = gridPosition;
 
-                Instantiate(selectedTower, gridPosition, Quaternion.identity); // Poser la tour
-                Destroy(previewTower); // Supprimer la prévisualisation
-                isPlacing = false; // Désactiver le mode placement après avoir posé la tour
+                if (Input.GetMouseButtonDown(0)) 
+                {
+                    if (IsGridOccupied(gridPosition)) 
+                    {
+                        Debug.Log("🚫 Emplacement occupé !");
+                        return;
+                    }
+
+                    int towerCost = GetTowerCost(selectedTower);
+                    if (MoneyManager.instance.CanAfford(towerCost))
+                    {
+                        MoneyManager.instance.SpendMoney(towerCost);
+                        GameObject newTower = Instantiate(selectedTower, gridPosition, Quaternion.identity);
+                        towerCosts[newTower] = towerCost; // Store tower cost for refund
+                        newTower.tag = "Tower"; // Ensure towers are tagged correctly
+                    }
+                    else
+                    {
+                        Debug.Log("Pas assez d'argent !");
+                    }
+
+                    Destroy(previewTower);
+                    isPlacing = false;
+                }
             }
+        }
+        else if (Input.GetMouseButtonDown(1)) // Right-click to sell a tower
+        {
+            SellTower();
         }
     }
 
     private bool IsGridOccupied(Vector3 position)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, 0.5f); // Vérifie si l'emplacement est occupé
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
         foreach (Collider collider in colliders)
         {
-            // Ignorer la prévisualisation de la tour (éviter que la prévisualisation soit détectée comme une tour placée)
-            if (collider.gameObject == previewTower) continue;
-
             if (collider.CompareTag("Tower"))
             {
-                return true; // Si un collider avec le tag "Tower" est trouvé, l'emplacement est occupé
+                return true;
             }
         }
         return false;
@@ -143,9 +129,38 @@ public class BuildManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
         {
-            return gridManager.GetNearestGridPosition(hit.point); // Retourner la position sur la grille
+            return gridManager.GetNearestGridPosition(hit.point);
         }
 
-        return Vector3.zero; // Retourner la position par défaut si rien n'est touché
+        return Vector3.zero;
+    }
+
+    public void SellTower()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject towerToSell = hit.collider.gameObject;
+            if (towerToSell.CompareTag("Tower") && towerCosts.ContainsKey(towerToSell))
+            {
+                int refundAmount = Mathf.RoundToInt(towerCosts[towerToSell] * 0.7f); // 70% refund
+                MoneyManager.instance.AddMoney(refundAmount);
+                towerCosts.Remove(towerToSell);
+                Destroy(towerToSell);
+                Debug.Log("Tour vendue ! Remboursement : " + refundAmount);
+            }
+        }
+    }
+
+    private int GetTowerCost(GameObject tower)
+    {
+        if (tower == MiniGun) return 100; 
+        if (tower == Cannon) return 150;
+        if (tower == Tesla) return 150;
+        if (tower == Inferno) return 100;
+
+        return 0;
     }
 }

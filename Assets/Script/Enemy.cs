@@ -1,36 +1,43 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class Enemy : MonoBehaviour // Classe mère abstraite
+public abstract class Enemy : MonoBehaviour
 {
     public float maxHealth;
     protected float currentHealth;
     public float speed;
     protected Transform target;
 
-    public int moneyReward = 50; // Récompense en argent quand l'ennemi est tué
+    public int moneyReward = 50;
+    public delegate void EnemyDeathHandler();
+    public event EnemyDeathHandler OnDeath;
+
 
     private bool isSlowed = false;
-    private float originalSpeed; // Sauvegarde de la vitesse originale
+    private float originalSpeed;
 
     protected virtual void Start()
     {
         currentHealth = maxHealth;
-        originalSpeed = speed; // Stocke la vitesse de base
+        originalSpeed = speed; // Store original speed
     }
 
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        Debug.Log(gameObject.name + " took " + damage + " damage. Current health: " + currentHealth);
+
         if (currentHealth <= 0)
         {
             Die();
         }
     }
-    
+
     public void ApplySlow(float slowFactor, float duration)
     {
-        if (!isSlowed) // Évite d'empiler plusieurs ralentissements
+        Debug.Log("Slowing enemy: " + gameObject.name);
+
+        if (!isSlowed)
         {
             StartCoroutine(SlowEffect(slowFactor, duration));
         }
@@ -38,16 +45,31 @@ public abstract class Enemy : MonoBehaviour // Classe mère abstraite
 
     private IEnumerator SlowEffect(float slowFactor, float duration)
     {
+        if (isSlowed) yield break; // Prevent multiple slow effects from stacking
+
         isSlowed = true;
-        speed *= slowFactor; // Réduit la vitesse
+        speed *= slowFactor;
+        Debug.Log(gameObject.name + " slowed! New speed: " + speed);
+
         yield return new WaitForSeconds(duration);
-        speed = originalSpeed; // Rétablit la vitesse initiale
+
+        speed = originalSpeed;
         isSlowed = false;
+        Debug.Log(gameObject.name + " slow effect ended. Speed restored: " + speed);
     }
 
-    protected void Die()
+  protected void Die()
+{
+    Debug.Log(gameObject.name + " has died.");
+    
+    if (MoneyManager.instance != null)
     {
-        MoneyManager.instance.AddMoney(moneyReward); // Ajoute l'argent au joueur lors de la mort de l'ennemi
-        Destroy(gameObject);
+        MoneyManager.instance.AddMoney(moneyReward);
     }
+
+    // Notify WaveManager
+    OnDeath?.Invoke();
+
+    Destroy(gameObject);
+}
 }

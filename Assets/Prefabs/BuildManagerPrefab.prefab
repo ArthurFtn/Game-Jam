@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e4930f55ad748c38639839f814fc3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inferno: {fileID: 2706364956460129053, guid: 8b2eec9f9db9dba45950954403a92658, type: 3}
+  Tesla: {fileID: 6542141224529953955, guid: 619a488fc2a39dc4e85bc8ad1ece08a9, type: 3}
   MiniGun: {fileID: 8812366742520334555, guid: 1fec075884cb1274093ef2e43e0eff84, type: 3}
   Cannon: {fileID: 8812366742520334555, guid: 8ba40a1cb649c60429f97af3e783899c, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  miniGunCost: 50
-  cannonCost: 75
