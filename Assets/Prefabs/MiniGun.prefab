@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 6
   attackCooldown: 0.2
-  bulletPrefab: {fileID: 8610478101494846568, guid: 134b993782a6a1049811837a68a6aa5f,
+  cannonballPrefab: {fileID: 8610478101494846568, guid: 134b993782a6a1049811837a68a6aa5f,
     type: 3}
   firePoint: {fileID: 7183443792213941930}
 --- !u!120 &4770334958052202034

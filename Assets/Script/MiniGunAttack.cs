@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class MiniGunAttack : MonoBehaviour
+public class CannonAttack : MonoBehaviour, ITowerAttack
 {
-    public float attackRange = 5f;
-    public float attackCooldown = 0.1f; // Faster firing speed
+    public float attackRange = 7f;
+    public float attackCooldown = 1f; // Plus lent que MiniGun
     private float lastAttackTime;
+    public GameObject cannonballPrefab; // Projectile de la tour
+    public Transform firePoint;
 
-    public GameObject bulletPrefab; // Assign in Unity Inspector
-    public Transform firePoint; // Position where bullets spawn
+    private bool canAttack = true; // Contrôle l'attaque
 
     void Update()
     {
+        if (!canAttack) return; // Désactive l'attaque si nécessaire
+
         Enemy enemy = FindClosestEnemy();
         if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
         {
@@ -22,12 +25,8 @@ public class MiniGunAttack : MonoBehaviour
     {
         if (Time.time - lastAttackTime >= attackCooldown)
         {
-            // Spawn a bullet at firePoint
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-            // Make the bullet face the enemy
-            bullet.transform.LookAt(enemy.transform);
-
+            GameObject cannonball = Instantiate(cannonballPrefab, firePoint.position, firePoint.rotation);
+            cannonball.transform.LookAt(enemy.transform);
             lastAttackTime = Time.time;
         }
     }
@@ -51,5 +50,16 @@ public class MiniGunAttack : MonoBehaviour
         }
 
         return closestEnemy;
+    }
+
+    // Implémentation de ITowerAttack
+    public void DisableAttack()
+    {
+        canAttack = false;
+    }
+
+    public void EnableAttack()
+    {
+        canAttack = true;
     }
 }

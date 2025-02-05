@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class TowerRocket : MonoBehaviour
+public class TowerRocket : MonoBehaviour, ITowerAttack
 {
     public float attackRange = 7f;
     public float attackCooldown = 2f; // Slower fire rate
     private float lastAttackTime;
-  
 
     public GameObject rocketPrefab; // Assign in Unity Inspector
     public Transform firePoint; // Position where rockets spawn
     public AudioSource shootAudio;
 
+    private bool canAttack = true; // Contrôle l'attaque
+
     void Update()
     {
+        if (!canAttack) return; // Désactive l'attaque si nécessaire
+
         Enemy enemy = FindClosestEnemy();
         if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
         {
@@ -61,5 +64,16 @@ public class TowerRocket : MonoBehaviour
         }
 
         return closestEnemy;
+    }
+
+    // Implémentation de ITowerAttack
+    public void DisableAttack()
+    {
+        canAttack = false;
+    }
+
+    public void EnableAttack()
+    {
+        canAttack = true;
     }
 }
