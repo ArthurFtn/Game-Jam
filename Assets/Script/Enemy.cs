@@ -43,6 +43,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    
     private IEnumerator SlowEffect(float slowFactor, float duration)
     {
         if (isSlowed) yield break; // Prevent multiple slow effects from stacking

@@ -6,11 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="a0164f8c-b860-4a9a-9493-e494de646965" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-JamV/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/BuildManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/BuildManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/MiniGunAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/MiniGunAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Script/RocketTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/RocketTower.cs" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/midEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/midEnemyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/smallEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/smallEnemyPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Construction 2 tours/NavMesh-Plane.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Construction 2 tours/NavMesh-Plane.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Systeme Argent.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/WaveManager.cs" afterDir="false" />
+>>>>>>> parent of 9545799 (Wave Ajust)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

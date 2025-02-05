@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   speed: 0
+  moneyReward: 50
 --- !u!54 &8737756225176541030
 Rigidbody:
   m_ObjectHideFlags: 0
