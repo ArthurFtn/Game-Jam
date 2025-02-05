@@ -10,6 +10,9 @@ public class BuildManager : MonoBehaviour
     public LayerMask groundLayer; // Layer pour le sol
     private GridManager gridManager; // Référence au gestionnaire de grille
 
+    public int miniGunCost = 50; // Coût de la MiniGun
+    public int cannonCost = 75;  // Coût de la Cannon
+
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
@@ -17,16 +20,32 @@ public class BuildManager : MonoBehaviour
 
     public void SelectMiniGun() // 🔥 Appelé par le bouton MiniGun
     {
-        selectedTower = MiniGun;
-        isPlacing = true;
-        Debug.Log("MiniGun sélectionné !");
+        if (MoneyManager.instance.CanAfford(miniGunCost)) // Vérifie si le joueur peut se permettre la tour
+        {
+            selectedTower = MiniGun;
+            isPlacing = true;
+            MoneyManager.instance.SpendMoney(miniGunCost); // Déduit l'argent lors de la sélection
+            Debug.Log("MiniGun sélectionné !");
+        }
+        else
+        {
+            Debug.Log("Pas assez d'argent pour MiniGun !");
+        }
     }
 
     public void SelectCannon() // 🔥 Appelé par le bouton Cannon
     {
-        selectedTower = Cannon;
-        isPlacing = true;
-        Debug.Log("Cannon sélectionné !");
+        if (MoneyManager.instance.CanAfford(cannonCost)) // Vérifie si le joueur peut se permettre la tour
+        {
+            selectedTower = Cannon;
+            isPlacing = true;
+            MoneyManager.instance.SpendMoney(cannonCost); // Déduit l'argent lors de la sélection
+            Debug.Log("Cannon sélectionné !");
+        }
+        else
+        {
+            Debug.Log("Pas assez d'argent pour Cannon !");
+        }
     }
 
     public void StopPlacingTower()

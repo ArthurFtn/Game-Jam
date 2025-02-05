@@ -6,7 +6,6 @@ public class TowerRocket : MonoBehaviour
     public float attackCooldown = 2f; // Slower fire rate
     private float lastAttackTime;
   
-
     public GameObject rocketPrefab; // Assign in Unity Inspector
     public Transform firePoint; // Position where rockets spawn
     public AudioSource shootAudio;
