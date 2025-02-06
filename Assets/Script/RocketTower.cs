@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TowerRocket : MonoBehaviour, ITowerAttack
 {
+    public int cost = 150; // Ajout du coût de la tour
     public float attackRange = 7f;
     public float attackCooldown = 2f; // Slower fire rate
     private float lastAttackTime;

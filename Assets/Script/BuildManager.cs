@@ -86,9 +86,11 @@ public class BuildManager : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1)) // Clic droit pour vendre
         {
+            Debug.Log("🖱️ Clic droit détecté !"); // Vérifie si le clic droit est bien pris en compte
             SellTower();
         }
     }
+
 
     private bool IsGridOccupied(Vector3 position)
     {
@@ -129,20 +131,43 @@ public class BuildManager : MonoBehaviour
     }
 
     public void SellTower()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+{
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+    if (Physics.Raycast(ray, out hit))
+    {
+        GameObject towerToSell = hit.collider.gameObject;
+        Debug.Log("🎯 Objet touché par le raycast : " + towerToSell.name);
+
+        if (towerToSell.CompareTag("Tower"))
         {
-            GameObject towerToSell = hit.collider.gameObject;
-            if (towerToSell.CompareTag("Tower"))
+            Debug.Log("💰 Tour détectée : " + towerToSell.name);
+
+            Tower towerScript = towerToSell.GetComponent<Tower>();
+            if (towerScript != null)
             {
-                int refundAmount = Mathf.RoundToInt(towerCosts[towerToSell] * 0.7f); // Rembourse 70%
+                int refundAmount = Mathf.RoundToInt(towerScript.cost * 0.7f); // 70% du prix initial
                 MoneyManager.instance.AddMoney(refundAmount);
                 Destroy(towerToSell);
-                Debug.Log("🔄 Tour vendue !");
+                Debug.Log("✅ Tour vendue, remboursement de " + refundAmount);
+            }
+            else
+            {
+                Debug.LogError("❌ La tour n'a pas de script Tower.cs !");
             }
         }
+        else
+        {
+            Debug.Log("❌ L'objet touché n'est pas une tour !");
+        }
     }
+    else
+    {
+        Debug.Log("❌ Aucune tour détectée !");
+    }
+}
+
+
+
 }
