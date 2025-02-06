@@ -1,30 +1,44 @@
-using System.Threading;
+using System.Collections;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyMoveBig : MonoBehaviour
 {
-    public Transform[] waypoints; // Tableau des waypoints
-    private int currentWaypointIndex = 0; // Indice du waypoint actuel
-    public float speed = 3f; // Vitesse de déplacement
+    public Transform[] waypoints;
+    private int currentWaypointIndex = 0;
+    public float speed = 3f;
+    private bool isWaiting = true;
+
+    void Start()
+    {
+        StartCoroutine(AttendreEtCommencerDeplacement());
+        IEnumerator AttendreEtCommencerDeplacement()
+        {
+            Debug.Log("Attente de 3 secondes avant le déplacement...");
+            yield return new WaitForSeconds(3f);  // Attente de 3 secondes
+            isWaiting = false;
+            Debug.Log("Déplacement commencé !");
+        }
+    }
+
 
 
     void Update()
     {
-        if (waypoints == null || waypoints.Length == 0) return; // Sécurité si aucun waypoint
+        if (isWaiting || waypoints == null || waypoints.Length == 0) return;
 
         // Déplacement vers le waypoint actuel
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
 
-        // Orientation de l'ennemi vers la prochaine destination
+        // Orientation vers la prochaine destination
         Vector3 direction = (waypoints[currentWaypointIndex].position - transform.position).normalized;
         transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 5f);
 
-        // Si l'ennemi atteint un waypoint, passe au suivant
+        // Vérifie si l'ennemi a atteint le waypoint
         if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
         {
+            Debug.Log($"Waypoint {currentWaypointIndex} atteint.");
             currentWaypointIndex++;
 
-            // Si l'ennemi atteint le dernier waypoint (base)
             if (currentWaypointIndex >= waypoints.Length)
             {
                 ReachBase();
@@ -42,7 +56,7 @@ public class EnemyMove : MonoBehaviour
             BaseHealth baseHealth = baseObject.GetComponent<BaseHealth>();
             if (baseHealth != null)
             {
-                baseHealth.TakeDamage(1); // Inflige des dégâts à la base
+                baseHealth.TakeDamage(1);
             }
             else
             {
@@ -50,6 +64,6 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
-        Destroy(gameObject, 0.1f); // Supprime l'ennemi après un court délai
+        Destroy(gameObject, 0.1f);
     }
 }
