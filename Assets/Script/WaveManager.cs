@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
     public GameObject midEnemyPrefab;
     public GameObject smallEnemyPrefab;
     public Transform spawnPoint; // Point de spawn des ennemis
+    public Transform[] waypoints; // Tableau des waypoints
 
     public int initialBigEnemies = 2;
     public int initialMidEnemies = 3;
@@ -44,21 +45,20 @@ public class WaveManager : MonoBehaviour
     {
         enemiesRemaining = big + mid + small;
 
-        for (int i = 0; i < big; i++)
-        {
-            SpawnEnemy(bigEnemyPrefab);
-            yield return new WaitForSeconds(spawnInterval);
-        }
+        // Création d'une liste contenant tous les ennemis de la vague
+        List<GameObject> enemiesToSpawn = new List<GameObject>();
 
-        for (int i = 0; i < mid; i++)
-        {
-            SpawnEnemy(midEnemyPrefab);
-            yield return new WaitForSeconds(spawnInterval);
-        }
+        for (int i = 0; i < big; i++) enemiesToSpawn.Add(bigEnemyPrefab);
+        for (int i = 0; i < mid; i++) enemiesToSpawn.Add(midEnemyPrefab);
+        for (int i = 0; i < small; i++) enemiesToSpawn.Add(smallEnemyPrefab);
 
-        for (int i = 0; i < small; i++)
+        // Mélange aléatoire des ennemis
+        ShuffleList(enemiesToSpawn);
+
+        // Spawn des ennemis dans l'ordre mélangé
+        foreach (GameObject enemyPrefab in enemiesToSpawn)
         {
-            SpawnEnemy(smallEnemyPrefab);
+            SpawnEnemy(enemyPrefab);
             yield return new WaitForSeconds(spawnInterval);
         }
     }
@@ -66,6 +66,18 @@ public class WaveManager : MonoBehaviour
     private void SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+
+        // Assigner les waypoints à l'ennemi
+        EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
+        if (enemyMove != null)
+        {
+            enemyMove.waypoints = waypoints;
+        }
+        else
+        {
+            Debug.LogError($"❌ L'ennemi {enemyPrefab.name} ne possède pas le script EnemyMove !");
+        }
+
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         if (enemyScript != null)
         {
@@ -79,6 +91,16 @@ public class WaveManager : MonoBehaviour
         if (enemiesRemaining <= 0)
         {
             Debug.Log("Tous les ennemis sont morts, vague terminée !");
+        }
+    }
+
+    // Fonction pour mélanger une liste
+    private void ShuffleList<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            (list[i], list[randomIndex]) = (list[randomIndex], list[i]); // Swap
         }
     }
 }
