@@ -5,53 +5,37 @@ public class BuildManager : MonoBehaviour
 {
     public GameObject Inferno;
     public GameObject Tesla;
-    public GameObject MiniGun; 
-    public GameObject Cannon;  
-    private GameObject selectedTower; 
-    private GameObject previewTower; 
-    private bool isPlacing = false; 
-    public LayerMask groundLayer; 
-    private GridManager gridManager; 
+    public GameObject MiniGun;
+    public GameObject Cannon;
+    private GameObject selectedTower;
+    private GameObject previewTower;
+    private bool isPlacing = false;
+    public LayerMask groundLayer;
+    public GridManager gridManager;
 
-    private Dictionary<GameObject, int> towerCosts = new Dictionary<GameObject, int>(); // Store tower costs
+    private Dictionary<GameObject, int> towerCosts = new Dictionary<GameObject, int>(); // Stocke le coût des tours
 
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
+
+        // Ajoute les coûts des tours
+        towerCosts[MiniGun] = 100;
+        towerCosts[Cannon] = 150;
+        towerCosts[Tesla] = 150;
+        towerCosts[Inferno] = 100;
     }
 
-    public void SelectMiniGun() 
+    public void SelectMiniGun() { StartPlacing(MiniGun); }
+    public void SelectCannon() { StartPlacing(Cannon); }
+    public void SelectTesla() { StartPlacing(Tesla); }
+    public void SelectInferno() { StartPlacing(Inferno); }
+
+    void StartPlacing(GameObject tower)
     {
-        selectedTower = MiniGun;
+        selectedTower = tower;
         isPlacing = true;
         CreatePreviewTower();
-    }
-
-    public void SelectCannon() 
-    {
-        selectedTower = Cannon;
-        isPlacing = true;
-        CreatePreviewTower();
-    }
-
-    public void SelectTesla() 
-    {
-        selectedTower = Tesla;
-        isPlacing = true;
-        CreatePreviewTower();
-    }
-
-    public void SelectInferno() 
-    {
-        selectedTower = Inferno;
-        isPlacing = true;
-        CreatePreviewTower();
-    }
-
-    public void StopPlacingTower()
-    {
-        isPlacing = false;
-        Destroy(previewTower);
     }
 
     void CreatePreviewTower()
@@ -59,51 +43,48 @@ public class BuildManager : MonoBehaviour
         if (selectedTower == null) return;
 
         if (previewTower != null)
-        {
             Destroy(previewTower);
-        }
 
-        previewTower = Instantiate(selectedTower, Vector3.zero, Quaternion.identity);
-        previewTower.GetComponent<Renderer>().material.color = Color.green; 
-        previewTower.GetComponent<Collider>().enabled = false; 
+        previewTower = Instantiate(selectedTower);
+        previewTower.GetComponent<Collider>().enabled = false; // Désactive le collider
+        previewTower.GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.5f); // Rend la tour transparente
     }
 
     void Update()
     {
         if (isPlacing && selectedTower != null)
         {
+            Vector3 gridPosition = GetMousePositionOnGrid();
             if (previewTower != null)
             {
-                Vector3 gridPosition = GetMousePositionOnGrid();
                 previewTower.transform.position = gridPosition;
+            }
 
-                if (Input.GetMouseButtonDown(0)) 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (IsGridOccupied(gridPosition)) 
                 {
-                    if (IsGridOccupied(gridPosition)) 
-                    {
-                        Debug.Log("🚫 Emplacement occupé !");
-                        return;
-                    }
-
-                    int towerCost = GetTowerCost(selectedTower);
-                    if (MoneyManager.instance.CanAfford(towerCost))
-                    {
-                        MoneyManager.instance.SpendMoney(towerCost);
-                        GameObject newTower = Instantiate(selectedTower, gridPosition, Quaternion.identity);
-                        towerCosts[newTower] = towerCost; // Store tower cost for refund
-                        newTower.tag = "Tower"; // Ensure towers are tagged correctly
-                    }
-                    else
-                    {
-                        Debug.Log("Pas assez d'argent !");
-                    }
-
-                    Destroy(previewTower);
-                    isPlacing = false;
+                    Debug.Log("🚫 Emplacement occupé !");
+                    return;
                 }
+
+                int towerCost = towerCosts[selectedTower];
+                if (MoneyManager.instance.CanAfford(towerCost))
+                {
+                    MoneyManager.instance.SpendMoney(towerCost);
+                    GameObject newTower = Instantiate(selectedTower, gridPosition, Quaternion.identity);
+                    newTower.tag = "Tower"; 
+                }
+                else
+                {
+                    Debug.Log("💰 Pas assez d'argent !");
+                }
+
+                Destroy(previewTower);
+                isPlacing = false;
             }
         }
-        else if (Input.GetMouseButtonDown(1)) // Right-click to sell a tower
+        else if (Input.GetMouseButtonDown(1)) // Clic droit pour vendre
         {
             SellTower();
         }
@@ -124,6 +105,18 @@ public class BuildManager : MonoBehaviour
 
     private Vector3 GetMousePositionOnGrid()
     {
+        if (Camera.main == null)
+        {
+            Debug.LogError("Caméra principale non trouvée !");
+            return Vector3.zero;
+        }
+
+        if (gridManager == null)
+        {
+            Debug.LogError("GridManager non initialisé !");
+            return Vector3.zero;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -143,24 +136,13 @@ public class BuildManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             GameObject towerToSell = hit.collider.gameObject;
-            if (towerToSell.CompareTag("Tower") && towerCosts.ContainsKey(towerToSell))
+            if (towerToSell.CompareTag("Tower"))
             {
-                int refundAmount = Mathf.RoundToInt(towerCosts[towerToSell] * 0.7f); // 70% refund
+                int refundAmount = Mathf.RoundToInt(towerCosts[towerToSell] * 0.7f); // Rembourse 70%
                 MoneyManager.instance.AddMoney(refundAmount);
-                towerCosts.Remove(towerToSell);
                 Destroy(towerToSell);
-                Debug.Log("Tour vendue ! Remboursement : " + refundAmount);
+                Debug.Log("🔄 Tour vendue !");
             }
         }
-    }
-
-    private int GetTowerCost(GameObject tower)
-    {
-        if (tower == MiniGun) return 100; 
-        if (tower == Cannon) return 150;
-        if (tower == Tesla) return 150;
-        if (tower == Inferno) return 100;
-
-        return 0;
     }
 }
