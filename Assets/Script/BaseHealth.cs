@@ -19,7 +19,15 @@ public class BaseHealth : MonoBehaviour
     void GameOver()
     {
         Debug.Log("💀 GAME OVER !");
-        // Ici, tu peux afficher un écran de défaite ou recharger la scène
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Recharge le niveau
+
+        GameOverUI gameOverUI = FindObjectOfType<GameOverUI>(); // Trouver l'UI Game Over
+        if (gameOverUI != null)
+        {
+            gameOverUI.ShowGameOver(); // Afficher l'écran de défaite
+        }
+        else
+        {
+            Debug.LogError("⚠️ Aucun GameOverUI trouvé dans la scène !");
+        }
     }
 }
