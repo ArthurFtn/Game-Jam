@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class TeslaTower : MonoBehaviour
@@ -13,14 +14,20 @@ public class TeslaTower : MonoBehaviour
 
     public float slowFactor = 0.5f; // 50% speed reduction
     public float slowDuration = 2f; // Slows enemies for 2 seconds
+
     private AudioSource audioSource;
+    public GameObject lightningOrb; // Assign Lightning Orb in Inspector
+    public float orbDuration = 0.3f; // Orb visibility duration
 
     void Start()
-{
-    audioSource = GetComponent<AudioSource>();
-}
-
-
+    {
+        audioSource = GetComponent<AudioSource>();
+        
+        if (lightningOrb != null)
+        {
+            lightningOrb.SetActive(false); // Ensure orb is off at the start
+        }
+    }
 
     void Update()
     {
@@ -36,11 +43,16 @@ public class TeslaTower : MonoBehaviour
         if (enemies.Length == 0) return;
 
         lastAttackTime = Time.time;
-        
+
         if (audioSource != null)
-    {
-        audioSource.Play();
-    }
+        {
+            audioSource.Play(); // Play attack sound
+        }
+
+        if (lightningOrb != null)
+        {
+            StartCoroutine(ShowLightningOrb()); // Show orb when attacking
+        }
 
         Vector3 startPoint = transform.position;
 
@@ -61,6 +73,13 @@ public class TeslaTower : MonoBehaviour
             // Move starting point for next chain jump
             startPoint = target.transform.position;
         }
+    }
+
+    IEnumerator ShowLightningOrb()
+    {
+        lightningOrb.SetActive(true); // Show the orb
+        yield return new WaitForSeconds(orbDuration); // Keep it visible for some time
+        lightningOrb.SetActive(false); // Hide the orb
     }
 
     void SpawnLightningEffect(Vector3 start, Vector3 end)

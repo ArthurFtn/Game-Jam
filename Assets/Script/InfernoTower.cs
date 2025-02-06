@@ -18,44 +18,47 @@ public class InfernoTower : MonoBehaviour
 
     void Start()
     {
-        fireBeam.enabled = false; // Disable beam initially
+        fireBeam.enabled = false; // ❌ Disable beam initially
+        if (fireEffect != null) fireEffect.Stop(); // ❌ Ensure fire effect is off at the start
     }
 
-   void Update()
-{
-    Enemy enemy = FindClosestEnemy();
-
-    if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
+    void Update()
     {
-        if (enemy != currentTarget)
+        Enemy enemy = FindClosestEnemy();
+
+        if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
         {
-            currentTarget = enemy;
+            if (enemy != currentTarget)
+            {
+                currentTarget = enemy;
+                currentDamage = baseDamage;
+            }
+
+            if (Time.time - lastAttackTime >= attackInterval)
+            {
+                Attack(currentTarget);
+            }
+
+            if (fireEffect != null && !fireEffect.isPlaying)
+            {
+                fireEffect.Play(); // ✅ Fire effect ON when attacking
+            }
+
+            DrawFireBeam(enemy.transform.position); // 🔥 Ensure beam is updated every frame
+        }
+        else
+        {
+            currentTarget = null;
             currentDamage = baseDamage;
+
+            if (fireEffect != null && fireEffect.isPlaying)
+            {
+                fireEffect.Stop(); // ❌ Fire effect OFF when not attacking
+            }
+
+            fireBeam.enabled = false; // ❌ Disable beam when no enemy
         }
-
-        if (Time.time - lastAttackTime >= attackInterval)
-        {
-            Attack(currentTarget);
-        }
-
-        if (!fireEffect.isPlaying) fireEffect.Play();
-
-        // 🔥 Ensure beam is updated every frame
-        DrawFireBeam(enemy.transform.position);
     }
-    else
-    {
-        currentTarget = null;
-        currentDamage = baseDamage;
-
-        if (fireEffect.isPlaying) fireEffect.Stop();
-        
-        // ❌ Disable beam when no enemy
-        fireBeam.enabled = false;
-    }
-}
-
-
 
     void Attack(Enemy enemy)
     {
@@ -66,25 +69,27 @@ public class InfernoTower : MonoBehaviour
             lastAttackTime = Time.time;
 
             // 🔥 Adjust fire intensity based on damage
-            var main = fireEffect.main;
-            main.startSize = Mathf.Lerp(0.5f, 3f, currentDamage / maxDamage);
+            if (fireEffect != null)
+            {
+                var main = fireEffect.main;
+                main.startSize = Mathf.Lerp(0.5f, 3f, currentDamage / maxDamage);
+            }
         }
     }
 
     void DrawFireBeam(Vector3 targetPosition)
-{
-    if (!fireBeam.enabled)
-        fireBeam.enabled = true; // Enable fire beam when attacking
+    {
+        if (!fireBeam.enabled)
+        {
+            fireBeam.enabled = true; // ✅ Enable fire beam when attacking
+        }
 
-    Vector3 start = firePoint.position; // 🔥 Fire starts from FirePoint
-    Vector3 end = targetPosition + Vector3.up * 0.5f; // Adjust target to mid-enemy
+        Vector3 start = firePoint.position; // 🔥 Fire starts from FirePoint
+        Vector3 end = targetPosition + Vector3.up * 0.5f; // Adjust target to mid-enemy
 
-    Debug.Log($"🔥 Fire Start: {start}, Fire End: {end}"); // Print positions
-
-    fireBeam.SetPosition(0, start);
-    fireBeam.SetPosition(1, end);
-}
-
+        fireBeam.SetPosition(0, start);
+        fireBeam.SetPosition(1, end);
+    }
 
     Enemy FindClosestEnemy()
     {
