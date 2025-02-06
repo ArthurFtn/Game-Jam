@@ -7,7 +7,6 @@ public class EnemyMove : MonoBehaviour
     private int currentWaypointIndex = 0; // Indice du waypoint actuel
     public float speed = 3f; // Vitesse de déplacement
 
-
     void Update()
     {
         if (waypoints == null || waypoints.Length == 0) return; // Sécurité si aucun waypoint
