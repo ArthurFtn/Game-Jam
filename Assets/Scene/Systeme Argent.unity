@@ -1681,7 +1681,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 929496047}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
-        m_MethodName: SelectInferno
+        m_MethodName: SelectTesla
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
