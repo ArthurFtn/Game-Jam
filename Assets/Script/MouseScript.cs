@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(BoxCollider))]
-
-public class MouseScript : MonoBehaviour
+public class UIButtonCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Texture2D cursorTexture; 
+    public Texture2D cursorTexture;
     public Texture2D defaultTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
-    private void OnMouseExit()
+
+    public void OnPointerExit(PointerEventData eventData)
     {
         Cursor.SetCursor(defaultTexture, Vector2.zero, cursorMode);
     }
