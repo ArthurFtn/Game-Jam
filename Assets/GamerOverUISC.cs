@@ -4,22 +4,45 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-    public GameObject gameOverPanel; // Le panel de Game Over
-    public Button restartButton; // Le bouton de redémarrage
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private Button restartButton;
+    private BaseHealth playerBaseHealth;
 
     void Start()
     {
-        gameOverPanel.SetActive(false); // Cache l'écran Game Over au début
-        restartButton.onClick.AddListener(RestartGame); // Ajoute l'événement au bouton
+        gameOverPanel.SetActive(false);
+        restartButton.onClick.AddListener(RestartGame);
+
+        // Automatically find BaseHealth if not manually assigned
+        playerBaseHealth = FindObjectOfType<BaseHealth>();
+
+        if (playerBaseHealth != null)
+        {
+            playerBaseHealth.OnDeath += ShowGameOver;
+        }
+        else
+        {
+            Debug.LogError("No BaseHealth script found in the scene!");
+        }
     }
 
     public void ShowGameOver()
     {
-        gameOverPanel.SetActive(true); // Affiche l'écran Game Over
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Recharge la scène
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void OnDestroy()
+    {
+        if (playerBaseHealth != null)
+        {
+            playerBaseHealth.OnDeath -= ShowGameOver;
+        }
     }
 }

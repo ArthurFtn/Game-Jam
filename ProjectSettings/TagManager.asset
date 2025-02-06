@@ -6,15 +6,19 @@ TagManager:
   tags:
   - CanPlace
   - CantPlace
+  - Tower
+  - Enemy
+  - Base
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - emplacementLayer
   - Water
   - UI
   - enemyLayer
-  - 
+  - Ground
   - PlacementLayer
   - PlacementGhosts
   - Towers

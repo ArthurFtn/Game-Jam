@@ -1,33 +1,41 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Permet de recharger la scène en cas de game over
+using System;
 
 public class BaseHealth : MonoBehaviour
 {
-    public int health = 5; // Points de vie de la base
+    [SerializeField] public int maxHealth = 5;
+    [SerializeField] public int currentHealth;
+
+    public event Action<float> OnHealthChanged;
+    public event Action OnDeath;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(1f);
+    }
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("🔥 Base touchée ! Points de vie restants : " + health);
+        if (damage <= 0) return;
 
-        if (health <= 0)
+        currentHealth = Mathf.Max(0, currentHealth - damage);
+
+        // Normalize health ratio for UI
+        float healthRatio = (float)currentHealth / maxHealth;
+        OnHealthChanged?.Invoke(healthRatio);
+
+        if (currentHealth <= 0)
         {
-            GameOver();
+            OnDeath?.Invoke();
         }
     }
 
-    void GameOver()
+    public void Heal(int amount)
     {
-        Debug.Log("💀 GAME OVER !");
+        if (amount <= 0) return;
 
-        GameOverUI gameOverUI = FindObjectOfType<GameOverUI>(); // Trouver l'UI Game Over
-        if (gameOverUI != null)
-        {
-            gameOverUI.ShowGameOver(); // Afficher l'écran de défaite
-        }
-        else
-        {
-            Debug.LogError("⚠️ Aucun GameOverUI trouvé dans la scène !");
-        }
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+        OnHealthChanged?.Invoke((float)currentHealth / maxHealth);
     }
 }

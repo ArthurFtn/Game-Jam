@@ -7,9 +7,19 @@ public class CannonAttack : MonoBehaviour, ITowerAttack
     private float lastAttackTime;
     public GameObject cannonballPrefab; // Projectile de la tour
     public Transform firePoint;
+    public GameObject skinPrefab;
+    private GameObject currentSkin;
 
     private bool canAttack = true; // Contrôle l'attaque
-
+void Start()
+    {
+        if (skinPrefab != null)
+        {
+            currentSkin = Instantiate(skinPrefab, transform);
+            currentSkin.transform.localPosition = Vector3.zero; // Align to tower position
+        }
+    }
+    
     void Update()
     {
         if (!canAttack) return; // Désactive l'attaque si nécessaire
