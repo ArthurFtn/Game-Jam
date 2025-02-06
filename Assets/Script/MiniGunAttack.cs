@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CannonAttack : MonoBehaviour, ITowerAttack
 {
+    public int cost = 150; // Ajout du coût de la tour
     public float attackRange = 7f;
     public float attackCooldown = 1f; // Plus lent que MiniGun
     private float lastAttackTime;

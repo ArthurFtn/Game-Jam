@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InfernoTower : MonoBehaviour
 {
+    public int cost = 150; // Ajout du coût de la tour
     public float attackRange = 6f;
     public float baseDamage = 5f;
     public float maxDamage = 30f;

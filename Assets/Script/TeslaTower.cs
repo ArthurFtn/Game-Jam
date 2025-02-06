@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class TeslaTower : MonoBehaviour
 {
+    public int cost = 150; // Ajout du coût de la tour
+
     public float attackRange = 7f;
     public float attackCooldown = 1.5f;
     private float lastAttackTime;
