@@ -84,16 +84,16 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Gradient: 0
-    - _GradientPower: 2.69
-    - _LeavesThickness: 0.513
+    - _Gradient: 0.071
+    - _GradientPower: 10
+    - _LeavesThickness: 0.95
     - _MaskClipValue: 0.5
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SNOWONOFF: 0
-    - _Smoothness: 0.581
+    - _Smoothness: 0.497
     - _SmoothnessTextureChannel: 0
     - _SnowAmount: 1
     - _SnowCoverage: 0.949
