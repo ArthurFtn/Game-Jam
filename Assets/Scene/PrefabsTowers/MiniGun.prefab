@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2338676195076576702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.28, y: 0.5, z: -0.78}
+  m_LocalPosition: {x: -0.278, y: 1.425, z: 0.416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 100
-  attackRange: 6
+  attackRange: 20
   attackCooldown: 1
   cannonballPrefab: {fileID: 8610478101494846568, guid: 134b993782a6a1049811837a68a6aa5f,
     type: 3}
@@ -285,7 +285,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 31.86933
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
