@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scene/Construction.unity
     guid: fa4b2ead1587447039a82a2becf3eeeb
   - enabled: 1
+    path: "Assets/Scene/D\xE9cor/D\xE9cor Grille.unity"
+    guid: 09def59c58e0247dcaa906081c196fa8
+  - enabled: 0
     path: Assets/Scene/Cursor.unity
     guid: 6ee59b8686863504bb66cc4c071f3bc0
   m_configObjects:
