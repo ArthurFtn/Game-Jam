@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2774b607cb7e97f4abe343df290c4038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 100
   attackRange: 7
   attackCooldown: 2
   rocketPrefab: {fileID: 7269328265664271287, guid: 87703b24cfca66145a62e0549bf355d4,

@@ -14,6 +14,7 @@ public class BuildManager : MonoBehaviour
     public GridManager gridManager;
 
     private Dictionary<GameObject, int> towerCosts = new Dictionary<GameObject, int>(); // Stocke le coût des tours
+    private Dictionary<GameObject, int> placedTowers = new Dictionary<GameObject, int>(); // Stocke les tours placées et leur coût
 
     void Start()
     {
@@ -21,8 +22,8 @@ public class BuildManager : MonoBehaviour
 
         // Ajoute les coûts des tours
         towerCosts[MiniGun] = 100;
-        towerCosts[Cannon] = 150;
-        towerCosts[Tesla] = 150;
+        towerCosts[Cannon] = 100;
+        towerCosts[Tesla] = 100;
         towerCosts[Inferno] = 100;
     }
 
@@ -60,7 +61,7 @@ public class BuildManager : MonoBehaviour
                 previewTower.transform.position = gridPosition;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) // Clic gauche pour placer la tour
             {
                 if (IsGridOccupied(gridPosition)) 
                 {
@@ -74,6 +75,9 @@ public class BuildManager : MonoBehaviour
                     MoneyManager.instance.SpendMoney(towerCost);
                     GameObject newTower = Instantiate(selectedTower, gridPosition, Quaternion.identity);
                     newTower.tag = "Tower"; 
+
+                    // ✅ Enregistre la tour placée et son coût
+                    placedTowers.Add(newTower, towerCost);
                 }
                 else
                 {
@@ -84,13 +88,11 @@ public class BuildManager : MonoBehaviour
                 isPlacing = false;
             }
         }
-        else if (Input.GetMouseButtonDown(1)) // Clic droit pour vendre
+        else if (Input.GetMouseButtonDown(1)) // Clic droit pour vendre une tour
         {
-            Debug.Log("🖱️ Clic droit détecté !"); // Vérifie si le clic droit est bien pris en compte
             SellTower();
         }
     }
-
 
     private bool IsGridOccupied(Vector3 position)
     {
@@ -131,43 +133,44 @@ public class BuildManager : MonoBehaviour
     }
 
     public void SellTower()
-{
-    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    RaycastHit hit;
-
-    if (Physics.Raycast(ray, out hit))
     {
-        GameObject towerToSell = hit.collider.gameObject;
-        Debug.Log("🎯 Objet touché par le raycast : " + towerToSell.name);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        if (towerToSell.CompareTag("Tower"))
+        if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("💰 Tour détectée : " + towerToSell.name);
+            GameObject towerToSell = hit.collider.gameObject;
+            Debug.Log("🎯 Objet touché par le raycast : " + towerToSell.name);
 
-            Tower towerScript = towerToSell.GetComponent<Tower>();
-            if (towerScript != null)
+            if (towerToSell.CompareTag("Tower"))
             {
-                int refundAmount = Mathf.RoundToInt(towerScript.cost * 0.7f); // 70% du prix initial
-                MoneyManager.instance.AddMoney(refundAmount);
-                Destroy(towerToSell);
-                Debug.Log("✅ Tour vendue, remboursement de " + refundAmount);
+                Debug.Log("💰 Tour détectée : " + towerToSell.name);
+
+                // ✅ Chercher le coût de la tour placée
+                if (placedTowers.ContainsKey(towerToSell))
+                {
+                    int refundAmount = Mathf.RoundToInt(placedTowers[towerToSell] * 0.7f);
+                    MoneyManager.instance.AddMoney(refundAmount);
+
+                    // ✅ Supprimer la tour du dictionnaire avant de la détruire
+                    placedTowers.Remove(towerToSell);
+                    Destroy(towerToSell);
+
+                    Debug.Log("✅ Tour vendue, remboursement de " + refundAmount);
+                }
+                else
+                {
+                    Debug.LogError("❌ Impossible de trouver le coût de cette tour !");
+                }
             }
             else
             {
-                Debug.LogError("❌ La tour n'a pas de script Tower.cs !");
+                Debug.Log("❌ L'objet touché n'est pas une tour !");
             }
         }
         else
         {
-            Debug.Log("❌ L'objet touché n'est pas une tour !");
+            Debug.Log("❌ Aucune tour détectée !");
         }
     }
-    else
-    {
-        Debug.Log("❌ Aucune tour détectée !");
-    }
-}
-
-
-
 }

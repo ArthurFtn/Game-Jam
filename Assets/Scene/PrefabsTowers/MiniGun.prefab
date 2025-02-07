@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 4232092342291984094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.309333, y: 1.01, z: 0.29}
+  m_LocalPosition: {x: 2.8, y: 1.01, z: -3.04}
   m_LocalScale: {x: 4.98, y: 4.98, z: 4.98}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -92,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6a240bb3d3304da791e5bc4c0ec6a3b, type: 2}
+  - {fileID: 2100000, guid: dd477912e5a0ed945976e1736cb92ad2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de694f9846014304e9213c44e7f65422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 100
   attackRange: 6
   attackCooldown: 1
   cannonballPrefab: {fileID: 8610478101494846568, guid: 134b993782a6a1049811837a68a6aa5f,
@@ -642,7 +643,7 @@ Transform:
   m_GameObject: {fileID: 8927997429731568190}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.37, y: -0.9193816, z: -1.3713486}
+  m_LocalPosition: {x: -0.28, y: -0.9193816, z: 0.01}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
