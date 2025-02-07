@@ -63,8 +63,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.58900166, y: 0.5000005, z: 1.2609437}
-  m_LocalScale: {x: 6.2299995, y: 8.3, z: 6.2299995}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4.91, y: 6.541413, z: 4.91}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8011615379480143958}
   - {fileID: 4916893518057972095}
@@ -159,9 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   attackRange: 20
-  baseDamage: 5
-  maxDamage: 30
-  damageIncreaseRate: 2
+  baseDamage: 8
+  maxDamage: 35
+  damageIncreaseRate: 1.7
   attackInterval: 0.5
   fireEffect: {fileID: 8936594982216378676}
   fireBeam: {fileID: 4773144578553478969}

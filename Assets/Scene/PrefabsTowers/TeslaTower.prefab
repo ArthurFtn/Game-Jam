@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.24255824, y: 0.5, z: 0.8813343}
-  m_LocalScale: {x: 0.5, y: 0.6, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.65, y: 0.78000003, z: 0.65}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8683030053771904259}
   m_Father: {fileID: 0}
@@ -85,8 +85,8 @@ MonoBehaviour:
     type: 3}
   lightningDuration: 1
   maxChainTargets: 3
-  damagePerTarget: 20
-  slowFactor: 0.5
+  damagePerTarget: 17
+  slowFactor: 0.8
   slowDuration: 2
   lightningOrb: {fileID: 7078693595930888067, guid: 90275853a4f9f2e4baa7d548f58f6391,
     type: 3}

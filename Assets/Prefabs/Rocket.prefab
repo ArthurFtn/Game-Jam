@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 50
-  explosionRadius: 10
+  explosionRadius: 15
   lifetime: 5
 --- !u!136 &-1593083146893199847
 CapsuleCollider:
@@ -128,7 +128,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.7798194
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

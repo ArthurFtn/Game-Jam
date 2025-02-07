@@ -23,7 +23,7 @@ public class BuildManager : MonoBehaviour
         // Ajoute les coûts des tours
         towerCosts[MiniGun] = 100;
         towerCosts[Cannon] = 100;
-        towerCosts[Tesla] = 100;
+        towerCosts[Tesla] = 400;
         towerCosts[Inferno] = 100;
     }
 
