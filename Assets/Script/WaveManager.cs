@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour
     public GameObject smallEnemyPrefab;
     public Transform spawnPoint; // Point de spawn des ennemis
     public Transform[] waypoints; // Tableau des waypoints
+    public float timer = 0; // Timer animation 
 
     public int initialBigEnemies = 2;
     public int initialMidEnemies = 3;
@@ -72,6 +73,10 @@ public class WaveManager : MonoBehaviour
         if (enemyMove != null)
         {
             enemyMove.waypoints = waypoints;
+        }
+        if (timer <= 3)
+        {
+            timer += Time.deltaTime;
         }
         else
         {

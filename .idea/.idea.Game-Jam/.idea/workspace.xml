@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bb0d591-2b53-431c-950b-0f71ccb94c39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Décor/Décor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Décor/Décor.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Jam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Jam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PBS Materials Variety Pack/Rocks/Rocks 6.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PBS Materials Variety Pack/Rocks/Rocks 6.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PBS Materials Variety Pack/Stone/Stone 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PBS Materials Variety Pack/Stone/Stone 3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bigEnemyPrefab.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +33,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;LibanDecor&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,6 +97,7 @@
       <workItem from="1738590873345" duration="3483000" />
       <workItem from="1738664442618" duration="32000" />
       <workItem from="1738664479227" duration="8194000" />
+      <workItem from="1738839467906" duration="2451000" />
     </task>
     <servers />
   </component>

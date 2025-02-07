@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 2708129879023064926}
   - component: {fileID: 8319583453107932452}
   - component: {fileID: 1017748029149331301}
-  - component: {fileID: 9053513228824618920}
+  - component: {fileID: -8773155506736534451}
   m_Layer: 0
   m_Name: Cavecrasher_Bl
   m_TagString: Untagged
@@ -910,7 +910,7 @@ MonoBehaviour:
   maxHealth: 150
   speed: 0
   moneyReward: 50
---- !u!114 &9053513228824618920
+--- !u!114 &-8773155506736534451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3377389015320415716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea92b4981033ef04d8258f0ce8067a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 92be5ab14f3ae4e6bad29992d248a5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
