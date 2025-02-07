@@ -10,7 +10,8 @@ public class TeslaTower : MonoBehaviour
     public float attackCooldown = 1.5f;
     private float lastAttackTime;
 
-    public GameObject lightningEffectPrefab; 
+    public GameObject lightningEffectPrefab;
+    public float lightningDuration = 1f;
     public int maxChainTargets = 3;
     public int damagePerTarget = 20;
 
@@ -74,6 +75,7 @@ public class TeslaTower : MonoBehaviour
 
             // Move starting point for next chain jump
             startPoint = target.transform.position;
+
         }
     }
 
@@ -83,6 +85,7 @@ public class TeslaTower : MonoBehaviour
         yield return new WaitForSeconds(orbDuration); // Keep it visible for some time
         lightningOrb.SetActive(false); // Hide the orb
     }
+
 
     void SpawnLightningEffect(Vector3 start, Vector3 end)
     {
