@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.334763
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -408,6 +408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7578153991765537231, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -523,7 +528,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -569,6 +574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1036,12 +1046,12 @@ PrefabInstance:
     - target: {fileID: 6528070719781236065, guid: 5663d34cf2159274a8b1a08b1a13e56c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.40000534
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 6528070719781236065, guid: 5663d34cf2159274a8b1a08b1a13e56c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 86.05563
+      value: 80.8
       objectReference: {fileID: 0}
     - target: {fileID: 6528070719781236065, guid: 5663d34cf2159274a8b1a08b1a13e56c,
         type: 3}
@@ -1114,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -1160,6 +1170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7578153991765537231, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -1508,7 +1523,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -1554,6 +1569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4609807297965168381, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -1884,7 +1904,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -1930,6 +1950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3255,7 +3280,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -3301,6 +3326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7578153991765537231, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -3439,7 +3469,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.334763
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -3485,6 +3515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4493966066979310549, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -4246,7 +4281,7 @@ GameObject:
   - component: {fileID: 663696012}
   m_Layer: 0
   m_Name: Road
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4260,7 +4295,7 @@ Transform:
   m_GameObject: {fileID: 663696011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 136.77522, y: -51.725666, z: 46.902443}
+  m_LocalPosition: {x: 136.77522, y: 0, z: 46.902443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4872,7 +4907,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -4918,6 +4953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7962,7 +8002,7 @@ PrefabInstance:
     - target: {fileID: 3553343624699440410, guid: 7949b3816d87b433a9017ac3f673e94c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.06
+      value: 103.4
       objectReference: {fileID: 0}
     - target: {fileID: 3553343624699440410, guid: 7949b3816d87b433a9017ac3f673e94c,
         type: 3}
@@ -7972,7 +8012,7 @@ PrefabInstance:
     - target: {fileID: 3553343624699440410, guid: 7949b3816d87b433a9017ac3f673e94c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55
+      value: 55.4
       objectReference: {fileID: 0}
     - target: {fileID: 3553343624699440410, guid: 7949b3816d87b433a9017ac3f673e94c,
         type: 3}
@@ -8422,7 +8462,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -8468,6 +8508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7578153991765537231, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -8606,7 +8651,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -8652,6 +8697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8970,7 +9020,7 @@ GameObject:
   - component: {fileID: 1616036884}
   m_Layer: 0
   m_Name: Fences
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11031,7 +11081,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -11077,6 +11127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -11368,7 +11423,7 @@ PrefabInstance:
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3894222995105915161, guid: c76dac5aff5973948b558bf1b998302b,
         type: 3}
@@ -11414,6 +11469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadE01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413773388049447843, guid: c76dac5aff5973948b558bf1b998302b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -11810,7 +11870,7 @@ PrefabInstance:
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.33476
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4012595314760596529, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}
@@ -11856,6 +11916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadC01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387713855967717003, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 7578153991765537231, guid: 5687b72d6aec04c4eb75fadba2cefe3d,
         type: 3}

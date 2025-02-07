@@ -103,6 +103,10 @@ public class BuildManager : MonoBehaviour
             {
                 return true;
             }
+            if (collider.CompareTag("Obstacle"))
+            {
+                return true;
+            }
         }
         return false;
     }
