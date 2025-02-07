@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.28104424, y: 2.1146731, z: 0.59259605}
-  m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
+  m_LocalScale: {x: 5.33, y: 5.33, z: 5.33}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6869703070807816828}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   lifetime: 2
-  damage: 3
+  damage: 15
 --- !u!1001 &9043589884381059824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,17 +196,17 @@ PrefabInstance:
     - target: {fileID: 2510580449880940684, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 12.04
       objectReference: {fileID: 0}
     - target: {fileID: 2510580449880940684, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 12.04
       objectReference: {fileID: 0}
     - target: {fileID: 2510580449880940684, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 12.04
       objectReference: {fileID: 0}
     - target: {fileID: 2510580449880940684, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
@@ -281,17 +281,17 @@ PrefabInstance:
     - target: {fileID: 2510580450559351216, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 3.83
       objectReference: {fileID: 0}
     - target: {fileID: 2510580450559351216, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 3.83
       objectReference: {fileID: 0}
     - target: {fileID: 2510580450559351216, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 3.83
       objectReference: {fileID: 0}
     - target: {fileID: 2510580450559351216, guid: 48962ebb9fad86b4cb9c100d98b86e96,
         type: 3}
