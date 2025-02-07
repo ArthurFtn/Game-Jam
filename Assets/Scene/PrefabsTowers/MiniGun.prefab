@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de694f9846014304e9213c44e7f65422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
+  cost: 150
   attackRange: 20
   attackCooldown: 1
   cannonballPrefab: {fileID: 8610478101494846568, guid: 134b993782a6a1049811837a68a6aa5f,

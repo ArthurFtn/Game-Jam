@@ -21,10 +21,10 @@ public class BuildManager : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
 
         // Ajoute les coûts des tours
-        towerCosts[MiniGun] = 100;
+        towerCosts[MiniGun] = 150;
         towerCosts[Cannon] = 100;
         towerCosts[Tesla] = 400;
-        towerCosts[Inferno] = 100;
+        towerCosts[Inferno] = 350;
     }
 
     public void SelectMiniGun() { StartPlacing(MiniGun); }
