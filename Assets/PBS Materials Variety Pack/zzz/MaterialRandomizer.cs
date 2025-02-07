@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEditor; // Assurez-vous que ceci est bien présent
 using System.Collections;
-using UnityEditor;
 
 [CustomEditor(typeof(MaterialRandomizerScript))]
 public class MaterialRandomizer : Editor 
